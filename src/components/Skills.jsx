@@ -1,73 +1,55 @@
-import { useState } from "react";
-
-const rowConfig = [
-    { reverse: false, duration: "7s" },
-    { reverse: true, duration: "24s" },
-    { reverse: false, duration: "14s" },
-    { reverse: true, duration: "30s" },
-    { reverse: false, duration: "20s" },
-    { reverse: true, duration: "10s" },
-    { reverse: false, duration: "26s" },
-];
+import { motion } from "framer-motion";
+import {
+    SiJavascript,
+    SiReact,
+    SiTailwindcss,
+    SiHtml5,
+    SiTypescript,
+    SiPhp,
+    SiMysql,
+    SiGit,
+    SiBootstrap,
+} from "react-icons/si";
+import { IoLogoCss3 } from "react-icons/io5";
 
 function Skills() {
-    const skills = [
-        { name: "HTML", color: "#E34F26" },
-        { name: "CSS", color: "#1572B6" },
-        { name: "Javascript", color: "#F7DF1E" },
-        { name: "PHP", color: "#777BB4" },
-        { name: "MySQL", color: "#4479A1" },
-        { name: "TypeScript", color: "#3178C6" },
-        { name: "TailwindCSS", color: "#06B6D4" },
-        { name: "Bootstrap", color: "#7952B3" },
-        { name: "React", color: "#61DAFB" },
-        { name: "Git", color: "#F05032" },
+    const allLang = [
+        { name: "HTML", icon: <SiHtml5 />, color: "#E34F26", url: "https://developer.mozilla.org/en-US/docs/Web/HTML" },
+        {
+            name: "CSS",
+            icon: <IoLogoCss3 />,
+            color: "#1572B6",
+            url: "https://developer.mozilla.org/en-US/docs/Web/CSS",
+        },
+        {
+            name: "JS",
+            icon: <SiJavascript />,
+            color: "#F7DF1E",
+            url: "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
+        },
+        { name: "TS", icon: <SiTypescript />, color: "#3178C6", url: "https://www.typescriptlang.org/" },
+        { name: "React", icon: <SiReact />, color: "#61DAFB", url: "https://react.dev/" },
+        { name: "Tailwind", icon: <SiTailwindcss />, color: "#06B6D4", url: "https://tailwindcss.com/" },
+        { name: "Bootstrap", icon: <SiBootstrap />, color: "#7952B3", url: "https://getbootstrap.com/" },
+        { name: "PHP", icon: <SiPhp />, color: "#777BB4", url: "https://www.php.net/" },
+        { name: "MySQL", icon: <SiMysql />, color: "#4479A1", url: "https://www.mysql.com/" },
+        { name: "Git", icon: <SiGit />, color: "#F05032", url: "https://git-scm.com/" },
     ];
 
     return (
-        <>
-            {rowConfig.map((config, i) => (
-                <MarqueeRow key={i} skills={skills} {...config} />
-            ))}
-        </>
-    );
-}
-
-function MarqueeRow({ skills, reverse, duration }) {
-    const animation = reverse ? "marquee-reverse" : "marquee";
-
-    return (
-        <div className="mb-3 flex items-center overflow-hidden">
-            <div
-                className="flex whitespace-nowrap gap-4"
-                style={{
-                    animation: `${animation} ${duration} linear infinite`,
-                }}
-            >
-                {[...skills, ...skills].map((tag, i) => (
-                    <SkillBadge key={i} name={tag.name} color={tag.color} />
-                ))}
+        <section id="skills" className="min-h-screen py-32 px-4 bg-zinc-50/50 dark:bg-zinc-900/50">
+            <div className="max-w-5xl mx-auto">
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    className="text-center mb-24"
+                >
+                    <h2 className="text-[10vw] font-bold tracking-tight text-zinc-800 dark:text-white mb-6">Skills</h2>
+                    <div className="h-1.5 w-24 bg-zinc-800 dark:bg-white mx-auto rounded-full" />
+                </motion.div>
             </div>
-        </div>
-    );
-}
-
-function SkillBadge({ name, color }) {
-    const [hovered, setHovered] = useState(false);
-
-    return (
-        <span
-            onMouseEnter={() => setHovered(true)}
-            onMouseLeave={() => setHovered(false)}
-            style={{
-                borderColor: hovered ? color : undefined,
-                color: hovered ? color : undefined,
-                backgroundColor: hovered ? `${color}18` : undefined,
-            }}
-            className="text-4xl px-6 py-2 rounded-full border border-zinc-200 dark:border-zinc-700 text-zinc-500 dark:text-zinc-400 shrink-0 transition-colors duration-300 cursor-default"
-        >
-            {name}
-        </span>
+        </section>
     );
 }
 

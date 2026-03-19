@@ -1,0 +1,73 @@
+import React from "react";
+import { motion } from "framer-motion";
+import { Github, Linkedin } from "lucide-react";
+
+function Contact() {
+    const Vandaag = new Date();
+
+    return (
+        <section id="contact" className="relative overflow-hidden">
+            <div className="min-h-screen bg-zinc-900 dark:bg-zinc-50 flex flex-col justify-center items-center px-4">
+                <motion.h2
+                    initial={{ y: 100, opacity: 0 }}
+                    whileInView={{ y: 0, opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8, ease: "easeOut" }}
+                    className="font-bold tracking-tighter leading-none select-none text-zinc-50 dark:text-zinc-950 
+                            text-[15vw] md:text-[20vw] lg:text-[25vw]"
+                >
+                    Contact.
+                </motion.h2>
+
+                <motion.div
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    transition={{ delay: 0.5, duration: 1 }}
+                    className="mt-10 flex flex-col items-center gap-6"
+                >
+                    <p className="text-zinc-400 dark:text-zinc-600 text-lg md:text-xl max-w-md text-center">
+                        Wil je wat vragen ? Stuur mij een bericht op mijn E-Mail:
+                    </p>
+
+                    <motion.a
+                        href="mailto:lmdbuigel@st.noorderportal.nl"
+                        className="group relative text-2xl md:text-4xl font-medium text-white dark:text-zinc-900 transition-all"
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.98 }}
+                    >
+                        lmdbuigel@st.noorderportal.nl
+                        <span className="absolute -bottom-2 left-0 w-0 h-1 bg-white dark:bg-zinc-900 transition-all duration-300 group-hover:w-full"></span>
+                    </motion.a>
+                </motion.div>
+
+                <div className="absolute bottom-10 left-0 px-10 w-full text-[10px] md:text-xs uppercase tracking-[0.2em] dark:text-zinc-800 text-zinc-200 flex justify-between items-center opacity-60">
+                    <div className="left-footer">
+                        Gemaakt door Luc Buigel in Groningen, NL — &copy; {new Date().getFullYear()}
+                    </div>
+
+                    <div className="right-footer flex gap-6">
+                        <motion.a
+                            href="https://github.com/lucbuigel15"
+                            target="_blank"
+                            whileHover={{ scale: 1.15 }}
+                            whileTap={{ scale: 0.8 }}
+                        >
+                            <Github />
+                        </motion.a>
+
+                        <motion.a
+                            href="https://linkedin.com"
+                            target="_blank"
+                            whileHover={{ scale: 1.15 }}
+                            whileTap={{ scale: 0.8 }}
+                        >
+                            <Linkedin />
+                        </motion.a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    );
+}
+
+export default Contact;

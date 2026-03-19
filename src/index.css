@@ -48,11 +48,6 @@ body {
     }
 }
 
-@keyframes marquee-reverse {
-    from {
-        transform: translateX(-50%);
-    }
-    to {
-        transform: translateX(0);
-    }
+.text-18xl {
+    font-size: 300px;
 }
