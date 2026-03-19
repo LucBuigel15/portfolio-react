@@ -6,7 +6,17 @@ Portfolio gemaakt in React.
 
 ## Met welke technologieen heb ik deze portfolio gemaakt ?
 
-Deze portfolio is gemaakt in **React** en **TailwindCSS**.
+Dit portfolio is gemaakt met de volgende technologieen:
+
+1. **React** Met **TailwindCSS**
+2. **CSS**
+3. **Framer Motion**
+4. **Lenis**
+
+Verder heb ik voor de icons de volgende bronnen gebruikt:
+
+1. **Lucide.dev**
+2. **React-icons**
 
 ## Hoe run je dit project?
 
