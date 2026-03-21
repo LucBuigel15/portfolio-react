@@ -13,7 +13,7 @@ function About() {
     };
 
     return (
-        <section id="about" className="min-h-screen py-24 px-4 bg-zinc-50/50 dark:bg-zinc-900/50">
+        <section id="about" className="min-h-screen py-24 px-4 bg-zinc-50/50 dark:bg-zinc-950">
             <div className="max-w-5xl mx-auto">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
@@ -21,7 +21,7 @@ function About() {
                     viewport={{ once: true }}
                     className="text-center mb-16"
                 >
-                    <h2 className="text-[10vw] flex-nowrap font-bold tracking-tight text-zinc-800 dark:text-white mb-4">
+                    <h2 className="text-5xl md:text-7xl flex-nowrap font-bold tracking-tight text-zinc-800 dark:text-white mb-4">
                         Wie ben ik ?
                     </h2>
                     <div className="h-1 w-20 bg-zinc-800 dark:bg-white mx-auto rounded-full" />

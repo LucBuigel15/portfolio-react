@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Github, Linkedin, Sun, Moon } from "lucide-react";
+import { motion } from "framer-motion";
 
 function Navbar() {
     const [darkMode, setDarkMode] = useState(true);
@@ -9,6 +10,20 @@ function Navbar() {
         document.documentElement.classList.toggle("dark");
     };
 
+    const handleScroll = (e, id) => {
+        e.preventDefault();
+        if (window.lenis && typeof window.lenis.scrollTo === "function") {
+            window.lenis.scrollTo(id, {
+                duration: 2,
+                easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+            });
+        } else {
+            const target = document.querySelector(id);
+            if (target) {
+                target.scrollIntoView({ behavior: "smooth" });
+            }
+        }
+    };
     return (
         <div className="sticky top-0 z-50 md:flex md:justify-center md:pt-5 md:px-4">
             <div
@@ -20,20 +35,38 @@ function Navbar() {
                             shadow-[0_4px_30px_rgba(0,0,0,0.08)]"
             >
                 <div className="nav-left">
-                    <a href="#home">
-                        <p className="text-2xl text-zinc-800 dark:text-white">lmd.dev</p>
-                    </a>
+                    <motion.a
+                        onClick={(e) => handleScroll(e, "#hero")}
+                        whileTap={{ scale: 0.98 }}
+                        whileHover={{ scale: 1.08 }}
+                        className="text-2xl text-zinc-800 dark:text-white cursor-pointer"
+                    >
+                        lmd.dev
+                    </motion.a>
                 </div>
                 <div className="text-2xl flex gap-2 text-zinc-800 dark:text-white">
-                    <Github />
-                    <Linkedin />
-                    <button onClick={toggleDarkMode} className="outline-none">
+                    <motion.a
+                        whileTap={{ scale: 0.98 }}
+                        whileHover={{ scale: 1.08 }}
+                        href="https://github.com/lucbuigel15"
+                    >
+                        <Github />
+                    </motion.a>
+                    <motion.a whileTap={{ scale: 0.98 }} whileHover={{ scale: 1.08 }} href="https://linkedin.com">
+                        <Linkedin />
+                    </motion.a>
+                    <motion.a
+                        whileHover={{ scale: 1.08 }}
+                        whileTap={{ scale: 0.98 }}
+                        onClick={toggleDarkMode}
+                        className="outline-none"
+                    >
                         {darkMode ? (
                             <Sun key="sun" className="animate-spin-once" />
                         ) : (
                             <Moon key="moon" className="animate-spin-once" />
                         )}
-                    </button>
+                    </motion.a>
                 </div>
             </div>
         </div>

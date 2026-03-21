@@ -7,7 +7,7 @@ function Contact() {
 
     return (
         <section id="contact" className="relative overflow-hidden">
-            <div className="min-h-screen bg-zinc-900 dark:bg-zinc-50 flex flex-col justify-center items-center px-4">
+            <div className="min-h-screen bg-zinc-950 dark:bg-zinc-50 flex flex-col justify-center items-center px-4">
                 <motion.h2
                     initial={{ y: 100, opacity: 0 }}
                     whileInView={{ y: 0, opacity: 1 }}

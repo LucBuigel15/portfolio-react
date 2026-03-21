@@ -10,12 +10,16 @@ import Projects from "./components/Projects";
 
 function App() {
     useEffect(() => {
+        // Initialiseer Lenis
         const lenis = new Lenis({
-            duration: 1.0,
+            duration: 1.2,
             lerp: 0.1,
-            wheelMultiplier: 3,
+            wheelMultiplier: 1, // Tip: 1 voelt natuurlijker dan 3, maar pas aan naar wens
             smoothWheel: true,
         });
+
+        // Maak lenis globaal beschikbaar voor je componenten
+        window.lenis = lenis;
 
         function raf(time) {
             lenis.raf(time);
@@ -26,11 +30,12 @@ function App() {
 
         return () => {
             lenis.destroy();
+            window.lenis = null;
         };
     }, []);
 
     return (
-        <div className="min-h-screen">
+        <div className="min-h-screen bg-zinc-50 dark:bg-zinc-950 transition-colors duration-500">
             <SmoothFollower />
             <Navbar />
             <Hero />
