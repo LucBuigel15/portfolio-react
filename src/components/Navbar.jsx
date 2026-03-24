@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Github, Linkedin, Sun, Moon } from "lucide-react";
 import { motion } from "framer-motion";
+import { handleScroll } from "../utils/handleScroll";
 
 function Navbar() {
     const [darkMode, setDarkMode] = useState(true);
@@ -10,20 +11,6 @@ function Navbar() {
         document.documentElement.classList.toggle("dark");
     };
 
-    const handleScroll = (e, id) => {
-        e.preventDefault();
-        if (window.lenis && typeof window.lenis.scrollTo === "function") {
-            window.lenis.scrollTo(id, {
-                duration: 2,
-                easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-            });
-        } else {
-            const target = document.querySelector(id);
-            if (target) {
-                target.scrollIntoView({ behavior: "smooth" });
-            }
-        }
-    };
     return (
         <div className="sticky top-0 z-50 md:flex md:justify-center md:pt-5 md:px-4">
             <div

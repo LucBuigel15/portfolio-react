@@ -114,7 +114,7 @@ function Hero() {
                     href="#about"
                     whileTap={{ scale: 0.98 }}
                     whileHover={{ scale: 1.08 }}
-                    onClick={(e) => handleScroll(e, "#skills")}
+                    onClick={(e) => handleScroll(e, "#about")}
                     className="hover:text-zinc-600 dark:hover:text-zinc-400 transition duration-200 cursor-pointer block"
                     aria-label="Scroll naar skills"
                 >

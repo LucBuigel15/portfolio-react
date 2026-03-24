@@ -55,7 +55,7 @@ export default function Skills({ setIsHovering }) {
     );
 
     return (
-        <section id="skills" className="py-24 px-4 bg-white dark:bg-zinc-950 min-h-screen">
+        <section id="skills" className="py-24 px-4 bg-zinc-50 dark:bg-zinc-950 min-h-screen">
             <div className="max-w-5xl mx-auto flex flex-col gap-12">
                 <MarqueeRow reverse={true} />
 
