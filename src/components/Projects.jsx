@@ -1,17 +1,6 @@
 import { easeOut, motion } from "framer-motion";
 import { Github } from "lucide-react";
-import {
-    SiJavascript,
-    SiReact,
-    SiTailwindcss,
-    SiHtml5,
-    SiTypescript,
-    SiPhp,
-    SiMysql,
-    SiGit,
-    SiBootstrap,
-    SiKotlin,
-} from "react-icons/si";
+import { SiJavascript, SiReact, SiTailwindcss, SiHtml5, SiGit, SiBootstrap, SiKotlin } from "react-icons/si";
 import { TbBrandFramerMotion } from "react-icons/tb";
 import { IoLogoCss3 } from "react-icons/io5";
 
@@ -56,18 +45,6 @@ const projects = [
         ],
     },
 ];
-
-const cardVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-        opacity: 1,
-        y: 0,
-        transition: {
-            duration: 0.5,
-            ease: easeOut,
-        },
-    },
-};
 
 function Projects() {
     return (

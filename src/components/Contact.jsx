@@ -1,9 +1,19 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Github, Linkedin } from "lucide-react";
+import { SiReact, SiTailwindcss, SiGit } from "react-icons/si";
+import { TbBrandFramerMotion } from "react-icons/tb";
+import { IoLogoCss3 } from "react-icons/io5";
 
 function Contact() {
     const Vandaag = new Date();
+
+    const madeIn = [
+        { name: "React", icon: <SiReact />, color: "#61DAFB" },
+        { name: "Tailwind", icon: <SiTailwindcss />, color: "#06B6D4" },
+        { name: "Framer Motion", icon: <TbBrandFramerMotion />, color: "#E91E63" },
+        { name: "CSS3", icon: <IoLogoCss3 />, color: "#1572b6" },
+    ];
 
     return (
         <section id="contact" className="relative overflow-hidden">
@@ -42,7 +52,15 @@ function Contact() {
 
                 <div className="absolute bottom-10 left-0 px-10 w-full text-[10px] md:text-xs uppercase tracking-[0.2em] dark:text-zinc-800 text-zinc-200 flex justify-between items-center opacity-60">
                     <div className="left-footer">
-                        Gemaakt door Luc Buigel in Groningen, NL — &copy; {new Date().getFullYear()}
+                        <div>Gemaakt door Luc Buigel in Groningen, NL — &copy; {new Date().getFullYear()}</div>
+                        <div className="flex items-center gap-3 mt-1">
+                            Gemaakt in
+                            {madeIn.map((lang, index) => (
+                                <span key={index} className="text-xl">
+                                    {lang.icon}
+                                </span>
+                            ))}
+                        </div>
                     </div>
 
                     <div className="right-footer flex gap-6">

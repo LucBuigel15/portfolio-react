@@ -1,34 +1,57 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
+
 export default function SmoothFollower() {
     const mousePosition = useRef({ x: 0, y: 0 });
     const dotPosition = useRef({ x: 0, y: 0 });
     const borderDotPosition = useRef({ x: 0, y: 0 });
+
     const [renderPos, setRenderPos] = useState({
         dot: { x: 0, y: 0 },
         border: { x: 0, y: 0 },
     });
+
     const [isHovering, setIsHovering] = useState(false);
+    // Nieuwe state om te bepalen of we de cursor tonen
+    const [isVisible, setIsVisible] = useState(false);
+
     const DOT_SMOOTHNESS = 0.2;
     const BORDER_DOT_SMOOTHNESS = 0.1;
+
     useEffect(() => {
+        // Controleer of het een touchscreen is of een klein scherm (bv. < 768px)
+        const isTouch = window.matchMedia("(pointer: coarse)").matches;
+        const isMobile = window.innerWidth < 768;
+
+        if (isTouch || isMobile) {
+            setIsVisible(false);
+            return; // Stop hier, voeg geen listeners toe
+        }
+
+        setIsVisible(true);
+
         const handleMouseMove = (e) => {
             mousePosition.current = { x: e.clientX, y: e.clientY };
         };
+
         const handleMouseEnter = () => setIsHovering(true);
         const handleMouseLeave = () => setIsHovering(false);
+
         window.addEventListener("mousemove", handleMouseMove);
+
         const interactiveElements = document.querySelectorAll("a, button, img, input, textarea, select");
         interactiveElements.forEach((element) => {
             element.addEventListener("mouseenter", handleMouseEnter);
             element.addEventListener("mouseleave", handleMouseLeave);
         });
+
+        let animationId;
         const animate = () => {
-            const lerp = (start, end, factor) => {
-                return start + (end - start) * factor;
-            };
+            const lerp = (start, end, factor) => start + (end - start) * factor;
+
             dotPosition.current.x = lerp(dotPosition.current.x, mousePosition.current.x, DOT_SMOOTHNESS);
             dotPosition.current.y = lerp(dotPosition.current.y, mousePosition.current.y, DOT_SMOOTHNESS);
+
             borderDotPosition.current.x = lerp(
                 borderDotPosition.current.x,
                 mousePosition.current.x,
@@ -39,16 +62,17 @@ export default function SmoothFollower() {
                 mousePosition.current.y,
                 BORDER_DOT_SMOOTHNESS,
             );
+
             setRenderPos({
                 dot: { x: dotPosition.current.x, y: dotPosition.current.y },
-                border: {
-                    x: borderDotPosition.current.x,
-                    y: borderDotPosition.current.y,
-                },
+                border: { x: borderDotPosition.current.x, y: borderDotPosition.current.y },
             });
-            requestAnimationFrame(animate);
+
+            animationId = requestAnimationFrame(animate);
         };
-        const animationId = requestAnimationFrame(animate);
+
+        animationId = requestAnimationFrame(animate);
+
         return () => {
             window.removeEventListener("mousemove", handleMouseMove);
             interactiveElements.forEach((element) => {
@@ -58,11 +82,15 @@ export default function SmoothFollower() {
             cancelAnimationFrame(animationId);
         };
     }, []);
-    if (typeof window === "undefined") return null;
+
+    // Als we op mobiel zitten of het is een touch device, renderen we niets
+    if (!isVisible) return null;
+
     return (
-        <div className="pointer-events-none fixed inset-0 z-999">
+        <div className="pointer-events-none fixed inset-0 z-[999]">
+            {/* De kleine stip - nu met een vaste kleur */}
             <div
-                className="absolute rounded-full dark:bg-white bg-black "
+                className="absolute rounded-full bg-black dark:bg-white"
                 style={{
                     width: "8px",
                     height: "8px",
@@ -72,8 +100,9 @@ export default function SmoothFollower() {
                 }}
             />
 
+            {/* De buitenste cirkel - nu met een vaste kleur */}
             <div
-                className="absolute rounded-full border dark:border-white border-black "
+                className="absolute rounded-full border border-black dark:border-white"
                 style={{
                     width: isHovering ? "44px" : "28px",
                     height: isHovering ? "44px" : "28px",

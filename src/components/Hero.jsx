@@ -110,14 +110,16 @@ function Hero() {
                 transition={{ delay: 0.5 }}
                 className="text-zinc-400 dark:text-zinc-600 mt-4"
             >
-                <a
-                    href="#skills"
+                <motion.a
+                    href="#about"
+                    whileTap={{ scale: 0.98 }}
+                    whileHover={{ scale: 1.08 }}
                     onClick={(e) => handleScroll(e, "#skills")}
                     className="hover:text-zinc-600 dark:hover:text-zinc-400 transition duration-200 cursor-pointer block"
                     aria-label="Scroll naar skills"
                 >
                     <ArrowDown className="animate-bounce" size={18} />
-                </a>
+                </motion.a>
             </motion.div>
         </section>
     );

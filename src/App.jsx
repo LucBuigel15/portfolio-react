@@ -14,7 +14,7 @@ function App() {
         const lenis = new Lenis({
             duration: 1.2,
             lerp: 0.1,
-            wheelMultiplier: 1, // Tip: 1 voelt natuurlijker dan 3, maar pas aan naar wens
+            wheelMultiplier: 1,
             smoothWheel: true,
         });
 
