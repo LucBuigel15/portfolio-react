@@ -99,8 +99,8 @@ function About() {
                                 </p>
                             </div>
                             <motion.a
-                                href="./public/cv-luc.pdf"
-                                download
+                                href="/cv.pdf"
+                                download="CV_Luc_Buigel.pdf"
                                 whileTap={{ scale: 0.95 }}
                                 whileHover={{ scale: 1.02 }}
                                 className="flex items-center px-8 py-4 bg-white dark:bg-zinc-900 text-zinc-900 dark:text-white rounded-2xl font-bold shadow-lg transition-colors text-center whitespace-nowrap"
