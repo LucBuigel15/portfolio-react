@@ -74,7 +74,7 @@ function Contact() {
                         </motion.a>
 
                         <motion.a
-                            href="https://linkedin.com"
+                            href="https://www.linkedin.com/in/luc-buigel-5379903b9/"
                             target="_blank"
                             whileHover={{ scale: 1.15 }}
                             whileTap={{ scale: 0.8 }}

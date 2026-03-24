@@ -49,10 +49,16 @@ function Navbar() {
                         whileTap={{ scale: 0.98 }}
                         whileHover={{ scale: 1.08 }}
                         href="https://github.com/lucbuigel15"
+                        target="_blank"
                     >
                         <Github />
                     </motion.a>
-                    <motion.a whileTap={{ scale: 0.98 }} whileHover={{ scale: 1.08 }} href="https://linkedin.com">
+                    <motion.a
+                        whileTap={{ scale: 0.98 }}
+                        whileHover={{ scale: 1.08 }}
+                        href="https://www.linkedin.com/in/luc-buigel-5379903b9/"
+                        target="_blank"
+                    >
                         <Linkedin />
                     </motion.a>
                     <motion.a

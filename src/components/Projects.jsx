@@ -9,7 +9,7 @@ const projects = [
         title: "Schrijvershoek - Zuidbroek",
         description:
             "Een website gemaakt voor de Schrijvershoek (een buurtvereniging in Zuidbroek). Samen gemaakt met 3 andere klasgenoten.",
-        github: "https://github.com",
+        github: "https://github.com/LucBuigel15/Schrijvershoek-Zuidbroek",
         icons: [
             <SiHtml5 className="hover:text-[#E34F26] transition-colors" title="HTML5" />,
             <SiTailwindcss className="hover:text-[#1572B6] transition-colors" title="TailwindCSS" />,
@@ -19,7 +19,7 @@ const projects = [
     {
         title: "React Portfolio - Luc Buigel ©",
         description: "Portfolio, geschreven in react.",
-        github: "https://github.com",
+        github: "https://github.com/LucBuigel15/Schrijvershoek-Zuidbroek",
         icons: [
             <SiReact className="hover:text-[#61DAFB] transition-colors" title="React" />,
             <SiTailwindcss className="hover:text-[#06B6D4] transition-colors" title="TailwindCSS" />,
@@ -30,7 +30,7 @@ const projects = [
     {
         title: "Intellij Tabout.",
         description: "Tabout extension voor IntelliJ IDEA, met ai gemaakt.",
-        github: "https://github.com",
+        github: "https://github.com/LucBuigel15/JumpOut-for-IntelliJ-IDEA",
         icons: [<SiKotlin className="hover:text-[#7F52FF] transition-colors" title="Kotlin" />],
     },
     {
