@@ -99,7 +99,7 @@ function About() {
                                 </p>
                             </div>
                             <motion.a
-                                href="/cv.pdf"
+                                href="/cv-Luc-Buigel.pdf"
                                 download="CV_Luc_Buigel.pdf"
                                 whileTap={{ scale: 0.95 }}
                                 whileHover={{ scale: 1.02 }}
