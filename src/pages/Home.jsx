@@ -8,7 +8,7 @@ import Projects from "../components/Projects";
 
 function Home() {
     return (
-        <div className="min-h-screen bg-zinc-50 dark:bg-zinc-950 transition-colors duration-500">
+        <div className="min-h-screen bg-white dark:bg-slate-950 transition-colors duration-500 pt-20">
             <SmoothFollower />
             <Navbar />
             <Hero />

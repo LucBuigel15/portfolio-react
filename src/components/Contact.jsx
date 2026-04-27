@@ -1,99 +1,30 @@
-import React from "react";
-import { motion } from "motion/react";
+import { motion } from "framer-motion";
 import { Github, Linkedin, ArrowUp } from "lucide-react";
-import { SiReact, SiTailwindcss } from "react-icons/si";
-import { TbBrandFramerMotion } from "react-icons/tb";
-import { IoLogoCss3 } from "react-icons/io5";
-import { handleScroll } from "../utils/handleScroll";
 
 function Contact() {
-    const madeIn = [
-        { name: "React", icon: <SiReact />, color: "#61DAFB" },
-        { name: "Tailwind", icon: <SiTailwindcss />, color: "#06B6D4" },
-        { name: "Framer Motion", icon: <TbBrandFramerMotion />, color: "#E91E63" },
-        { name: "CSS3", icon: <IoLogoCss3 />, color: "#1572b6" },
-    ];
-
     return (
-        <section id="contact" className="relative overflow-hidden">
-            <div className="min-h-screen bg-zinc-950 dark:bg-zinc-50 flex flex-col justify-center items-center px-4">
-                <motion.h2
-                    initial={{ y: 100, opacity: 0 }}
-                    whileInView={{ y: 0, opacity: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.8, ease: "easeOut" }}
-                    className="font-bold tracking-tighter leading-none select-none text-zinc-50 dark:text-zinc-950 text-[15vw] md:text-[20vw] lg:text-[25vw]"
-                >
-                    Contact.
-                </motion.h2>
+        <section id="contact" className="py-24 px-5 md:px-16 lg:px-24 min-h-screen flex flex-col justify-center">
+            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
+                <p className="text-xs uppercase tracking-[0.2em] text-slate-400 mb-3">Contact</p>
+                <h2 className="text-[10vw] md:text-[8vw] lg:text-[7vw] font-bold tracking-tighter text-slate-800 dark:text-white leading-[0.9]">Neem contact op</h2>
+            </motion.div>
 
-                <motion.div
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    transition={{ delay: 0.5, duration: 1 }}
-                    className="mt-10 flex flex-col items-center gap-6"
-                >
-                    <p className="text-zinc-400 dark:text-zinc-600 text-lg md:text-xl max-w-md text-center">
-                        Wil je wat vragen ? Stuur mij een bericht op mijn E-Mail:
-                    </p>
+            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.2 }} className="mt-12">
+                <p className="text-slate-500 dark:text-slate-400 max-w-lg mb-6">Heb je een vraag of wil je samenwerken? Stuur me gerust een berichtje!</p>
+                <motion.a href="mailto:lmdbuigel@st.noorderportal.nl" whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} className="text-xl md:text-2xl font-medium text-slate-800 dark:text-white border-b-2 border-slate-800 dark:border-white pb-1">
+                    lmdbuigel@st.noorderportal.nl
+                </motion.a>
+            </motion.div>
 
-                    <motion.a
-                        href="mailto:lmdbuigel@st.noorderportal.nl"
-                        className="group relative text-2xl md:text-4xl font-medium text-white dark:text-zinc-900 transition-all"
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.98 }}
-                    >
-                        lmdbuigel@st.noorderportal.nl
-                        <span className="absolute -bottom-2 left-0 w-0 h-1 bg-white dark:bg-zinc-900 transition-all duration-300 group-hover:w-full"></span>
-                    </motion.a>
-                </motion.div>
+            <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.4 }} className="flex gap-6 mt-10">
+                <motion.a href="https://github.com/lucbuigel15" target="_blank" whileHover={{ scale: 1.1 }} className="text-slate-400 dark:text-slate-500 hover:text-slate-600 transition-colors"><Github size={22} /></motion.a>
+                <motion.a href="https://www.linkedin.com/in/luc-buigel-5379903b9/" target="_blank" whileHover={{ scale: 1.1 }} className="text-slate-400 dark:text-slate-500 hover:text-slate-600 transition-colors"><Linkedin size={22} /></motion.a>
+                <motion.a href="#hero" whileHover={{ scale: 1.1, y: -3 }} className="text-slate-400 dark:text-slate-500 hover:text-slate-600 transition-colors"><ArrowUp size={22} /></motion.a>
+            </motion.div>
 
-                <div className="absolute bottom-10 left-0 px-10 w-full text-[10px] md:text-xs uppercase tracking-[0.2em] dark:text-zinc-800 text-zinc-200 flex justify-between items-center">
-                    <div className="left-footer opacity-60">
-                        <div>Gemaakt door Luc Buigel in Groningen, NL — &copy; {new Date().getFullYear()}</div>
-                        <div className="flex items-center gap-3 mt-1">
-                            Gemaakt in
-                            {madeIn.map((lang, index) => (
-                                <span key={index} className="text-xl">
-                                    {lang.icon}
-                                </span>
-                            ))}
-                        </div>
-                    </div>
-
-                    <div className="right-footer flex gap-6 items-center">
-                        <motion.a
-                            href="https://github.com/lucbuigel15"
-                            target="_blank"
-                            className="opacity-60 hover:opacity-100 transition-opacity"
-                            whileHover={{ scale: 1.15 }}
-                            whileTap={{ scale: 0.8 }}
-                        >
-                            <Github />
-                        </motion.a>
-
-                        <motion.a
-                            href="https://www.linkedin.com/in/luc-buigel-5379903b9/"
-                            target="_blank"
-                            className="opacity-60 hover:opacity-100 transition-opacity"
-                            whileHover={{ scale: 1.15 }}
-                            whileTap={{ scale: 0.8 }}
-                        >
-                            <Linkedin />
-                        </motion.a>
-
-                        <motion.a
-                            href="#hero"
-                            onClick={(e) => handleScroll(e, "#hero")}
-                            whileHover={{ scale: 1.15 }}
-                            whileTap={{ scale: 0.8 }}
-                            className="bg-white text-zinc-950 p-2 rounded-full dark:bg-zinc-950 dark:text-zinc-50 shadow-lg"
-                        >
-                            <ArrowUp size={20} />
-                        </motion.a>
-                    </div>
-                </div>
-            </div>
+            <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.6 }} className="mt-16 text-sm text-slate-400 dark:text-slate-500">
+                © {new Date().getFullYear()} Luc Buigel — Groningen, NL
+            </motion.p>
         </section>
     );
 }

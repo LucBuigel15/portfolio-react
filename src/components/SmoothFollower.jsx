@@ -87,7 +87,7 @@ export default function SmoothFollower() {
     if (!isVisible) return null;
 
     return (
-        <div className="pointer-events-none fixed inset-0 z-[999]">
+        <div className="pointer-events-none fixed inset-0 z999">
             {/* De kleine stip - nu met een vaste kleur */}
             <div
                 className="absolute rounded-full bg-black dark:bg-white"
